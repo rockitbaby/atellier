@@ -27,10 +27,14 @@ class PropertiesContainer extends __React__.Component {
     if (props) {
       this._defineProperties(props);
     }
+    this.state = { propertyValues: this._properties };
   }
 
   componentWillReceiveProps(nextProps) {
     this._defineProperties(nextProps);
+
+    this.setState({propertyValues: this._properties});
+    this.forceUpdate();
   }
 
   render() {
@@ -65,6 +69,8 @@ class PropertiesContainer extends __React__.Component {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
 
+    let propertyValues = this.state.propertyValues || this._properties;
+
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
       propsFields.push(
@@ -72,7 +78,8 @@ class PropertiesContainer extends __React__.Component {
           key={prop}
           name={prop}
           type={proptype.type}
-          defaultValue={this._properties[prop]}
+          value={propertyValues[prop]}
+          defaultValue={propertyValues[prop]}
           options={proptype.options}
           components={this.props.components}
           onChange={this._handleChange}
@@ -91,6 +98,7 @@ class PropertiesContainer extends __React__.Component {
 
   _handleChange = (propName, propValue) => {
     this._properties[propName] = propValue;
+    this.setState({propertyValues: this._properties});
     this.props.onChangeProps(this._properties);
   };
 

@@ -35,7 +35,7 @@ class Sidebar extends __React__.Component {
     let className = classNames('sidebar', {'sidebar-close': this.state.close})
     return (
       <div className={className}>
-        <h1 className="logo">ATELLIER</h1>
+        <h1 className="logo">ATELLIER</h1><sup>HOTFIXED</sup>
         <span className="sidebar-toggle-button" onClick={this._handleToggleSidebar}>
           <img src={toggleButtonImage} />
         </span>
