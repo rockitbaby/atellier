@@ -54,7 +54,7 @@ class FieldType extends __React__.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <textarea className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+        <textarea className="atellier-input" value={defaultValue} defaultValue={defaultValue} onChange={this._handleChange} />
       </div>
     );
   }
@@ -63,7 +63,7 @@ class FieldType extends __React__.Component {
     return (
       <div className="properties-field">
         <label>{name}</label>
-        <input type="number" className="atellier-input" defaultValue={defaultValue} onChange={this._handleChange} />
+        <input type="number" className="atellier-input" value={defaultValue} defaultValue={defaultValue} onChange={this._handleChange} />
       </div>
     );
   }

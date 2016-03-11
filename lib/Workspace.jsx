@@ -16,11 +16,15 @@ class Workspace extends __React__.Component {
     onCloseProperties: PropTypes.func,
   };
 
-  constructor(props) {
+  constructor(props) {;
     super(props);
-    this.state = {
-      componentProps: {}
-    };
+    this.state = { componentProps: {} };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.component != this.props.component) {
+      this.setState({ componentProps: {} });
+    }
   }
 
   render() {
